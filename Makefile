@@ -6,12 +6,12 @@
 #    By: sabdulba <sabdulba@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/08 20:15:58 by sabdulba          #+#    #+#              #
-#    Updated: 2024/11/09 00:38:52 by sabdulba         ###   ########.fr        #
+#    Updated: 2024/11/09 15:16:01 by sabdulba         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
-SRC = ft_printf.c ft_strings.c
+SRC = ft_printf.c ft_strings.c ft_number.c
 MAIN_OBJ = ft_printf.o
 OBJ := $(SRC:%.c=%.o)
 LIBC = ar rc $(NAME)
