@@ -6,7 +6,7 @@
 /*   By: sabdulba <sabdulba@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 15:47:34 by sabdulba          #+#    #+#             */
-/*   Updated: 2024/11/09 16:50:28 by sabdulba         ###   ########.fr       */
+/*   Updated: 2024/11/09 18:15:26 by sabdulba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	ft_printf(const char *str, ...)
 	va_end(ptr);
 	return (count);
 }
-
+/*
 int	main(void)
 {
 	int	res;
@@ -68,7 +68,7 @@ int	main(void)
 	int	num;
 	int	*ptr;
 
-	num = 1024;
+	num = 0;
 	ptr = &num;
 	res = ft_printf("Hive %s\n", "Helsinki.");
 	res1 = printf("Hive %s\n", "Helsinki.");
@@ -78,13 +78,21 @@ int	main(void)
 	res1 = printf("Hive %s %d\n", "Helsinki.", 1024);
 	printf("%d\n", res);
 	printf("%d\n", res1);
-	res = ft_printf("Hive %x\n", 456);
-	res1 = printf("Hive %x\n", 456);
+	res = ft_printf("Hive %x\n", 0);
+	res1 = printf("Hive %x\n", 0);
 	printf("%d\n", res);
 	printf("%d\n", res1);
 	res = ft_printf("Pointer address: %p\n", ptr);
 	res1 = printf("Pointer address: %p\n", ptr);
 	printf("%d\n", res);
 	printf("%d\n", res1);
+	
+	ft_printf("%p %p\n", (void *)0, (void*)0);
+	printf("%p %p\n", (void *)0, (void*)0);
+	
+	ft_printf("Print this %% out\n");
+	printf("Print this %% out\n");
+
 	return (0);
 }
+*/

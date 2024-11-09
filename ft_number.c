@@ -6,7 +6,7 @@
 /*   By: sabdulba <sabdulba@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 22:14:23 by sabdulba          #+#    #+#             */
-/*   Updated: 2024/11/09 16:53:05 by sabdulba         ###   ########.fr       */
+/*   Updated: 2024/11/09 18:16:40 by sabdulba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,18 @@ void	ft_unsigned(unsigned int n, int *count)
 }
 
 //Used unsigned long to reuse for pointer
-void	ft_hex(unsigned long n, int *count, char up_low)
+//TODO failed tester - fix
+void	ft_hex(unsigned int n, int *count, char up_low)
 {
 	char	convert[25];
 	char	*base;
 	int		i;
 
+	if (n == 0)
+	{
+		write(1, "0", 1);
+		(*count)++;
+	}
 	if (up_low == 'x')
 		base = "0123456789abcdef";
 	else
@@ -61,7 +67,26 @@ void	ft_hex(unsigned long n, int *count, char up_low)
 
 void	ft_pointer(size_t point, int *count)
 {
+	char	convert[25];
+	char	*base;
+	int		i;
+
+	if (point == 0)
+	{
+		write(1, "(nil)", 5);
+		(*count) += 5;
+		return ;
+	}
 	write(1, "0x", 2);
 	(*count) += 2;
-	ft_hex(point, count, 'x');
+	base = "0123456789abcdef";
+	i = 0;
+	while (point != 0)
+	{
+		convert[i] = base[point % 16];
+		point /= 16;
+		i++;
+	}
+	while (i--)
+		ft_putchar(convert[i], count);
 }
