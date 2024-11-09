@@ -1,24 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_strings.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sabdulba <sabdulba@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/08 19:45:20 by sabdulba          #+#    #+#             */
-/*   Updated: 2024/11/08 23:55:59 by sabdulba         ###   ########.fr       */
+/*   Created: 2024/11/08 22:14:27 by sabdulba          #+#    #+#             */
+/*   Updated: 2024/11/09 00:36:51 by sabdulba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINT_H
-# define FT_PRINT_H
+#include "ft_printf.h"
 
-# include <stdio.h> //remove later
-# include <unistd.h>
-# include <stdarg.h>
+void ft_putchar(char c, int *count)
+{
+	write(1, &c, 1);
+	(*count)++;
+}
 
-void ft_putchar(char c, int *count);
-void ft_putstr(char *str, int *count);
+void ft_putstr(char *str, int *count)
+{
+	int	i;
 
-
-#endif
+	i = 0;
+	if(!str)
+	{
+		write(1, "(null)", 6);
+		(*count) += 6;
+	}
+	else
+		while(str[i] != '\0')
+		{
+			ft_putchar(str[i], count);
+			i++;
+		}
+}

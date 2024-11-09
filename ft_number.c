@@ -1,24 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_number.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sabdulba <sabdulba@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/08 19:45:20 by sabdulba          #+#    #+#             */
-/*   Updated: 2024/11/08 23:55:59 by sabdulba         ###   ########.fr       */
+/*   Created: 2024/11/08 22:14:23 by sabdulba          #+#    #+#             */
+/*   Updated: 2024/11/09 01:52:58 by sabdulba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINT_H
-# define FT_PRINT_H
+#include "ft_printf.h"
 
-# include <stdio.h> //remove later
-# include <unistd.h>
-# include <stdarg.h>
-
-void ft_putchar(char c, int *count);
-void ft_putstr(char *str, int *count);
-
-
-#endif
+void ft_putnbr(int n, int *count)
+{
+	long	nbr;
+	char	digit;
+	
+	nbr = n;
+	if (nbr < 0)
+	{
+		write(1, "-", 1);
+		nbr = -nbr;
+		(*count)++;
+	}
+	if (nbr == 0)
+	{
+		write(1, "0", 1);
+		(*count)++;
+	}
+	if (nbr > 9)
+		ft_putnbr(nbr / 10, count++);
+	digit = (nbr % 10) + 48;
+	write(1, &digit, 1);
+}
